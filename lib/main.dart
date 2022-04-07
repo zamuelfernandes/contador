@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false, // REMOVER O DEBUG
       home: HomePage(),
     );
   }
@@ -31,82 +32,90 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 52, 168, 235),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //CAMPO DE INFORMAÇÃO
-          const Text(
-            'Pode Entrar!!',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/image.jpg'),
+            fit: BoxFit.cover,
           ),
-
-          // CAMPO DO VALOR
-          const Padding(
-            padding: EdgeInsets.all(70),
-            child: Text(
-              '11',
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            //CAMPO DE INFORMAÇÃO
+            const Text(
+              'Pode Entrar!!',
               style: TextStyle(
-                fontSize: 100,
+                fontSize: 30,
                 color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
+
+            //CAMPO DO VALOR
+            const Padding(
+              padding: EdgeInsets.all(70),
+              child: Text(
+                '11',
+                style: TextStyle(
+                  fontSize: 100,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
 
-          //ROW COM OS BOTÕES
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //BOTÃO DE SAIU
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  fixedSize: const Size(100, 100),
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(color: Colors.black, width: 3),
-                    borderRadius: BorderRadius.circular(24),
+            //ROW COM OS BOTÕES
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //BOTÃO DE SAIU
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: const Size(100, 100),
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.black, width: 3),
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  onPressed: decrement,
+                  child: const Text(
+                    'Saiu',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-                onPressed: decrement,
-                child: const Text(
-                  'Saiu',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w900,
+                const SizedBox(width: 32),
+                //BOTÃO DE ENTROU
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: const Size(100, 100),
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(color: Colors.black, width: 3),
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  onPressed: increment,
+                  child: const Text(
+                    'Entrou',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 32),
-              //BOTÃO DE ENTROU
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  fixedSize: const Size(100, 100),
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(color: Colors.black, width: 3),
-                    borderRadius: BorderRadius.circular(24),
-                  ),
-                ),
-                onPressed: increment,
-                child: const Text(
-                  'Entrou',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
