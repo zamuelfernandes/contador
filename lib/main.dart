@@ -10,11 +10,52 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
-        color: const Color.fromARGB(255, 22, 109, 224),
-        child: const Text('Olá Mundo!!'),
-        alignment: Alignment.center,
+    return const MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'Pode Entrar!!',
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const Text(
+            '11',
+            style: TextStyle(
+              fontSize: 100,
+              color: Colors.white,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FloatingActionButton(
+                onPressed: () {},
+                child: const Text('Saiu'),
+              ),
+              FloatingActionButton(
+                onPressed: () {},
+                child: const Text('Entrou'),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
