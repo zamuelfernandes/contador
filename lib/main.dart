@@ -107,10 +107,7 @@ class _HomePageState extends State<HomePage> {
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
+                      //side: const BorderSide(color: Colors.black, width: 2),
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
@@ -133,10 +130,7 @@ class _HomePageState extends State<HomePage> {
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                        color: Colors.black,
-                        width: 2,
-                      ),
+                      //side: const BorderSide(color: Colors.black, width: 2),
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
