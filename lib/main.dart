@@ -10,22 +10,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false, // REMOVER O DEBUG
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // REMOVER A ETIQUETA DEBUG
       home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
+
   void decrement() {
-    print('Decrement');
+    setState(() {
+      count--;
+    });
   }
 
   void increment() {
-    print('Increment');
+    setState(() {
+      count++;
+    });
   }
 
   @override
@@ -54,11 +65,11 @@ class HomePage extends StatelessWidget {
             ),
 
             //CAMPO DO VALOR
-            const Padding(
-              padding: EdgeInsets.all(70),
+            Padding(
+              padding: const EdgeInsets.all(70),
               child: Text(
-                '11',
-                style: TextStyle(
+                '$count',
+                style: const TextStyle(
                   fontSize: 100,
                   color: Colors.white,
                 ),
@@ -76,7 +87,10 @@ class HomePage extends StatelessWidget {
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.black, width: 3),
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
@@ -98,7 +112,10 @@ class HomePage extends StatelessWidget {
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.black, width: 3),
+                      side: const BorderSide(
+                        color: Colors.black,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
