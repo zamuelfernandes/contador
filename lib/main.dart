@@ -25,17 +25,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int count = 0;
+  int count1 = 0;
+  int count2 = 0;
+
+  bool get isEmpty => count1 == 0;
+  bool get isFull => count1 == 20;
 
   void decrement() {
     setState(() {
-      count--;
+      count1--;
+      count2--;
     });
   }
 
   void increment() {
     setState(() {
-      count++;
+      count1++;
+      count2++;
     });
   }
 
@@ -53,10 +59,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //CAMPO DE INFORMAÇÃO
-            const Text(
-              'Pode Entrar!!',
-              style: TextStyle(
+            //CAMPO DE INFORMAÇÃO ----------------------------------
+            Text(
+              isFull ? 'LOTADO!!' : 'Pode Entrar!!',
+              style: const TextStyle(
                 fontSize: 30,
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -64,26 +70,40 @@ class _HomePageState extends State<HomePage> {
               textAlign: TextAlign.center,
             ),
 
-            //CAMPO DO VALOR
+            //CAMPO DOS VALORES -----------------------------------
             Padding(
-              padding: const EdgeInsets.all(70),
-              child: Text(
-                '$count',
-                style: const TextStyle(
-                  fontSize: 100,
-                  color: Colors.white,
-                ),
+              padding: const EdgeInsets.only(top: 70, bottom: 70),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '$count1',
+                    style: TextStyle(
+                      fontSize: 100,
+                      color: isFull ? Colors.red : Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 70),
+                  Text(
+                    '$count2',
+                    style: TextStyle(
+                      fontSize: 100,
+                      color: isFull ? Colors.red : Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
 
-            //ROW COM OS BOTÕES
+            //ROW COM OS BOTÕES ----------------------------------
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //BOTÃO DE SAIU
+                //BOTÃO DE SAIU ---------------------------------
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor:
+                        isEmpty ? Colors.white.withOpacity(0.3) : Colors.white,
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
@@ -94,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   child: const Text(
                     'Saiu',
                     style: TextStyle(
@@ -105,10 +125,11 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(width: 32),
-                //BOTÃO DE ENTROU
+                //BOTÃO DE ENTROU ------------------------------
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor:
+                        isFull ? Colors.white.withOpacity(0.3) : Colors.white,
                     fixedSize: const Size(100, 100),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
@@ -119,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(24),
                     ),
                   ),
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   child: const Text(
                     'Entrou',
                     style: TextStyle(
